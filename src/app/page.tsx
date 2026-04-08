@@ -12,7 +12,8 @@ export default function Home() {
   const {
     reviewCode,
     fixCode,
-    loading,
+    reviewLoading,
+    fixLoading,
     result,
     fixedCode,
   } = useStreamingReview();
@@ -27,7 +28,8 @@ export default function Home() {
           setLanguage={setLanguage}
           onReview={reviewCode}
           onFix={fixCode}
-          loading={loading}
+          reviewLoading={reviewLoading}
+          fixLoading={fixLoading}
         />
       </div>
 

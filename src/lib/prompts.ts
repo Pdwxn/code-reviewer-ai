@@ -29,7 +29,14 @@ export const buildReviewPrompt = (code: string, language: string) => {
   
   Fix and improve the following ${language} code.
   
-  Return ONLY the improved code. Do not add explanations.
+  STRICT RULES:
+  - Return ONLY valid ${language} code
+  - DO NOT include explanations
+  - DO NOT include comments
+  - DO NOT include markdown (no triple backticks)
+  - DO NOT include <think> or reasoning
+  - DO NOT describe your process
+  - ONLY output pure code
   
   CODE:
   ${code}

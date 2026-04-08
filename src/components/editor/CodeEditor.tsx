@@ -8,11 +8,13 @@ type Props = {
     setLanguage: (lang: string) => void;
     onReview: (code: string, language: string) => void;
     onFix: (code: string, language: string) => void;
-    loading: boolean;
+    reviewLoading: boolean;
+    fixLoading: boolean;
   };
 
-export default function CodeEditor({ language, setLanguage, onReview, onFix, loading }: Props) {
+export default function CodeEditor({ language, setLanguage, onReview, onFix, reviewLoading, fixLoading }: Props) {
   const [code, setCode] = useState("// Write your code here...");
+  
 
   return (
     <div className="h-full flex flex-col gap-3">
@@ -32,18 +34,18 @@ export default function CodeEditor({ language, setLanguage, onReview, onFix, loa
 
         <button
           onClick={() => onReview(code, language)}
-          disabled={loading}
+          disabled={reviewLoading}
           className="bg-accent text-black px-4 py-2 rounded font-semibold disabled:opacity-50"
         >
-          {loading ? "Reviewing..." : "Review Code"}
+          {reviewLoading ? "Reviewing..." : "Review Code"}
         </button>
 
         <button
     onClick={() => onFix(code, language)}
-    disabled={loading}
+    disabled={fixLoading}
     className="bg-green-500 text-black px-4 py-2 rounded font-semibold disabled:opacity-50"
   >
-    {loading ? "Fixing..." : "Fix Code"}
+    {fixLoading ? "Fixing..." : "Fix Code"}
   </button>
 
         <button
