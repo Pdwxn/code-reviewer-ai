@@ -1,12 +1,13 @@
 "use client";
 
-export default function ReviewPanel() {
+type Props = {
+  result: string;
+};
+
+export default function ReviewPanel({ result }: Props) {
   return (
-    <div>
-      <h2 className="text-xl font-bold mb-4">AI Review</h2>
-      <p className="text-gray-400">
-        Your analysis will appear here...
-      </p>
+    <div className="whitespace-pre-wrap text-sm leading-relaxed">
+      {result || "Your analysis will appear here..."}
     </div>
   );
 }

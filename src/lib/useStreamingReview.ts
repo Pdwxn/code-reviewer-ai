@@ -1,4 +1,3 @@
-// src/lib/useStreamingReview.ts
 "use client";
 
 import { useState } from "react";
