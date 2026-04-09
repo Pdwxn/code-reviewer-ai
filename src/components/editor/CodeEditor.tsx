@@ -1,21 +1,19 @@
 "use client";
 
 import Editor from "@monaco-editor/react";
-import { useState } from "react";
 
 type Props = {
-    language: string;
-    setLanguage: (lang: string) => void;
-    onReview: (code: string, language: string) => void;
-    onFix: (code: string, language: string) => void;
-    reviewLoading: boolean;
-    fixLoading: boolean;
-  };
+  code: string;
+  setCode: (code: string) => void;
+  language: string;
+  setLanguage: (lang: string) => void;
+  onReview: (code: string, language: string) => void;
+  onFix: (code: string, language: string) => void;
+  reviewLoading: boolean;
+  fixLoading: boolean;
+};
 
-export default function CodeEditor({ language, setLanguage, onReview, onFix, reviewLoading, fixLoading }: Props) {
-  const [code, setCode] = useState("// Write your code here...");
-  
-
+export default function CodeEditor({ code, setCode, language, setLanguage, onReview, onFix, reviewLoading, fixLoading }: Props) {
   return (
     <div className="h-full flex flex-col gap-3">
 

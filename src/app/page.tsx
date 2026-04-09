@@ -5,10 +5,12 @@ import CodeEditor from "@/components/editor/CodeEditor";
 import ReviewPanel from "@/components/review/ReviewPanel";
 import FixedCodePanel from "@/components/review/FixedCodePanel";
 import { useStreamingReview } from "@/lib/useStreamingReview";
+import CodeDiffViewer from "@/components/review/CodeDiffViewer";
 
 export default function Home() {
   const [language, setLanguage] = useState("javascript");
-
+  const [code, setCode] = useState("");
+  
   const {
     reviewCode,
     fixCode,
@@ -24,6 +26,8 @@ export default function Home() {
       {/* LEFT */}
       <div className="w-1/2 border-r border-border p-4">
         <CodeEditor
+          code={code}
+          setCode={setCode}
           language={language}
           setLanguage={setLanguage}
           onReview={reviewCode}
@@ -35,9 +39,20 @@ export default function Home() {
 
       {/* RIGHT */}
       <div className="w-1/2 p-4 overflow-y-auto">
-        <ReviewPanel result={result} />
-        <FixedCodePanel code={fixedCode} language={language} />
-      </div>
+  <ReviewPanel result={result} />
+
+  {fixedCode && (
+    <>
+      <FixedCodePanel code={fixedCode} language={language} />
+
+      <CodeDiffViewer
+        original={code}
+        modified={fixedCode}
+        language={language}
+      />
+    </>
+  )}
+</div>
 
     </main>
   );
