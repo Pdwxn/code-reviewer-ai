@@ -71,10 +71,6 @@ const fixCode = async (code: string, language: string) => {
     const chunk = decoder.decode(value);
     setFixedCode(prev => cleanCode(prev + chunk));
   }
-  console.log("STATUS:", res.status);
-
-  console.log("FIXED RAW CODE:", fixedCode);
-  console.log("FIXED CLEAN CODE:", cleanCode(fixedCode));
   setFixLoading(false);
 };
   
